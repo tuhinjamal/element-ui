@@ -1,8 +1,14 @@
 <template>
-  <el-row :gutter="20" :class="customizationStore.mode ? 'dark-mode' : ''">
-    <el-col :span="4" class="m-0 p-0"><sidebar /></el-col>
+  <el-row
+    :gutter="20"
+    :class="customizationStore.mode == 'dark' ? 'dark-mode' : ''"
+  >
+    <el-col :xs="0" :md="4" class="m-0 p-0 border shadow left-bar"
+      ><sidebar
+    /></el-col>
+    <el-col :xs="24" :md="0" class="m-0 p-0 border shadow"><sidebar /></el-col>
 
-    <el-col :span="20" class="m-0 p-0"><hero /></el-col>
+    <el-col :xs="24" :md="20" class="m-0 p-0 border shadow"><hero /></el-col>
   </el-row>
 </template>
 
@@ -16,12 +22,12 @@ export default {
   data() {
     return {
       customizationStore: useCustomizationStore(),
-      value1: ref(true),
     };
   },
   components: {
     sidebar: sidebarComponent,
     hero: heroComponent,
+    sidebarVisibility: false,
   },
 };
 </script>

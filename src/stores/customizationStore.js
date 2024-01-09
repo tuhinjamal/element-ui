@@ -2,13 +2,15 @@ import { defineStore } from "pinia";
 
 export const useCustomizationStore = defineStore("customizationStore", {
   state: () => ({
-    mode: false,
+    mode: localStorage.getItem("mode"),
   }),
   actions: {
     modeChange(value) {
       this.mode = value;
-      console.log("this.mode", this.mode);
-      return this.mode;
+
+      localStorage.setItem("mode", this.mode);
+
+      // return this.mode;
     },
   },
 });
